@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Task Flow</string>
+    <string name="welcome">The simplest and most powerful way \n to manage your <b>tasks</b> and <b>projects.</b></string>
 </resources>
