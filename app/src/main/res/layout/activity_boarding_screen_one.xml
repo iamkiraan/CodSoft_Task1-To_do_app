@@ -15,12 +15,13 @@
       tools:layout_editor_absoluteX="0dp"
       tools:layout_editor_absoluteY="0dp" />
 
-  <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+  <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
+
       android:id="@+id/indicator"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_gravity="center"
-      app:dotsColor="@color/white"
-      android:layout_marginBottom="20dp" />
+      app:dotsColor="@color/black"
+      android:layout_marginBottom="0dp" />
 
 </LinearLayout>

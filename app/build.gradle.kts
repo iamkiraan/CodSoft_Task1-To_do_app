@@ -56,4 +56,7 @@ dependencies {
 
     // dots indicatior
     implementation(libs.dotsindicator)
+    
+
+
 }

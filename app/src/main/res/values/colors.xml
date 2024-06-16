@@ -6,4 +6,7 @@
     <color name="Boarding1">#98c1e4</color>
     <color name="boarding3">#f9a9ac</color>
     <color name="boarding2">#a5e28d</color>
+    <color name="bottom_nav_background">#FFFFFF</color>
+    <color name="bottom_nav_item_color">#000000</color>
+    <color name="bottom_nav_item_color_selected">#FF0000</color>
 </resources>

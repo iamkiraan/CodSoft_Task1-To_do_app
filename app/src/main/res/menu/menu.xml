@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/HOME"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Home"
+        />
+    <item
+        android:id="@+id/CREATE"
+        android:icon="@drawable/baseline_add_task_24"
+        android:title="task"
+      />
+    <item
+        android:id="@+id/CALENDER"
+        android:icon="@drawable/baseline_calendar_month_24"
+        android:title="calender"
+        />
+    <item
+        android:id="@+id/FOLDER"
+        android:icon="@drawable/baseline_create_new_folder_24"
+        android:title="folder"
+     />
+</menu>

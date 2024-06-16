@@ -26,6 +26,7 @@ class Starting : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         animateText(binding.TODO)
         CoroutineScope(Dispatchers.Main).launch {
             delay(4000)
@@ -41,11 +42,11 @@ class Starting : AppCompatActivity() {
     private fun animateText(textView: TextView) {
             textView.alpha = 0f
             textView.animate()
-                .alpha(1f)
+                .alpha(0f)
                 .setDuration(2000)
                 .withEndAction {
                     textView.animate()
-                        .alpha(0f)
+                        .alpha(1f)
                         .setDuration(2000)
                         .start()
                 }

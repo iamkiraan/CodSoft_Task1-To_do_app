@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Task Flow</string>
     <string name="welcome">The simplest and most powerful way \n to manage your <b>tasks</b> and <b>projects.</b></string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="second">Create <b>lists</b>,add <b>tasks</b>,set <b>deadLines</b>,\nassign <b>priorities</b>, and track your\n<b>progress</b> with ease.</string>
+    <string name="third">Provide yourself a better way to <b>dream, learn</b> and <b>grow</b>.</string>
+
 </resources>

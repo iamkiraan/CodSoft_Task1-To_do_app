@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/boarding3"
     android:orientation="vertical"
     android:padding="20dp"
@@ -41,7 +42,7 @@
         android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/welcome"
+        android:text="@string/second"
         android:layout_gravity="center"
         android:textSize="16sp"/>
 
@@ -52,8 +53,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Get Started"
+            android:textColor="@color/white"
             android:background="@drawable/button_shape"
             />
+    <Button
+        android:layout_marginTop="10dp"
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Get Started"
+        android:background="@drawable/button_shape"
+        android:textColor="@color/white" />
 
 
 </LinearLayout>

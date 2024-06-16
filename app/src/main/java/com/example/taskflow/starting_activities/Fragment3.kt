@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.taskflow.DecideActivity
 import com.example.taskflow.MainActivity
 import com.example.taskflow.databinding.Fragment3Binding
 
@@ -27,7 +28,7 @@ class Fragment3 : Fragment() {
         val view = binding.root
 
         binding.getStarted.setOnClickListener {
-            val intent = Intent(activity, MainActivity::class.java)
+            val intent = Intent(activity, DecideActivity::class.java)
             startActivity(intent)
         }
 
