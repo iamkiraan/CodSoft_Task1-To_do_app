@@ -1,92 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- res/layout/activity_boarding_screen_one.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
-    tools:context=".starting_activities.BoardingScreenOne"
-    android:background="@color/Boarding1">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="ͲօᎠօ"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="300dp"
-        android:src="@drawable/two"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"/>
-   <LinearLayout
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:orientation="horizontal"
-       android:padding="20dp"
-       android:layout_gravity="center">
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="Welcome to"
-           android:textSize="18sp"
-           android:textStyle="bold"
-           android:textColor="@color/black"
-           android:layout_gravity="center"/>
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="ͲօᎠօ"
-           android:padding="10dp"
-           android:textSize="18sp"
+    tools:context=".starting_activities.BoardingScreenOne">
 
-           android:textColor="@color/white"
-           android:textStyle="bold"
-           android:layout_gravity="center"/>
+  <androidx.viewpager2.widget.ViewPager2
+      android:id="@+id/viewPager1"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      tools:layout_editor_absoluteX="0dp"
+      tools:layout_editor_absoluteY="0dp" />
 
-   </LinearLayout>
-    <TextView
-        android:textColor="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/welcome"
-        android:layout_gravity="center"
-        android:textSize="16sp"/>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="40dp"
-    android:layout_gravity="center"
-    android:layout_marginTop="60dp">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Skip"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        />
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Next"
-        android:background="@drawable/button_shape"
-
-        />
-
-</LinearLayout>
-
-
+  <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+      android:id="@+id/indicator"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      app:dotsColor="@color/white"
+      android:layout_marginBottom="20dp" />
 
 </LinearLayout>

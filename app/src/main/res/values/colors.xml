@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="Splash_screen">#4897D0</color>
     <color name="Boarding1">#98c1e4</color>
+    <color name="boarding3">#f9a9ac</color>
+    <color name="boarding2">#a5e28d</color>
 </resources>

@@ -51,6 +51,9 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    //coroutine for handling time in splash screen
+    //coroutine for handling time in splash screens
     implementation(libs.kotlinx.coroutines.android)
+
+    // dots indicatior
+    implementation(libs.dotsindicator)
 }
