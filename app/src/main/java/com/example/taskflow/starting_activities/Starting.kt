@@ -43,7 +43,7 @@ class Starting : AppCompatActivity() {
             textView.alpha = 0f
             textView.animate()
                 .alpha(0f)
-                .setDuration(2000)
+                .setDuration(1000)
                 .withEndAction {
                     textView.animate()
                         .alpha(1f)
