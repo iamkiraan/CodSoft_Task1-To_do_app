@@ -9,4 +9,6 @@
     <color name="bottom_nav_background">#FFFFFF</color>
     <color name="bottom_nav_item_color">#000000</color>
     <color name="red">#FF0000</color>
+    <color name="folder_color">#dceaf7</color>
+    <color name="blue">#02ccfe</color>
 </resources>

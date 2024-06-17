@@ -3,6 +3,8 @@ agp = "8.4.1"
 chipNavigationBar = "1.4.0"
 circleindicator = "2.1.6'"
 dotsindicator = "4.2"
+horizontalcalendar = "1.1.7"
+horizontalcalendarview = "v1.0.0"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -13,12 +15,15 @@ kotlinxCoroutinesAndroid = "1.7.3"
 material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
+materialCalendarview = "2.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 chip-navigation-bar = { module = "com.github.ismaeldivita:chip-navigation-bar", version.ref = "chipNavigationBar" }
 circleindicator = { module = "me.relex:circleindicator", version.ref = "circleindicator" }
 dotsindicator = { module = "com.tbuonomo:dotsindicator", version.ref = "dotsindicator" }
+horizontalcalendar = { module = "devs.mulham.horizontalcalendar:horizontalcalendar", version.ref = "horizontalcalendar" }
+horizontalcalendarview = { module = "com.github.akshittyagi205:HorizontalCalendarView", version.ref = "horizontalcalendarview" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -27,6 +32,7 @@ kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutine
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+material-calendarview = { module = "com.github.prolificinteractive:material-calendarview", version.ref = "materialCalendarview" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

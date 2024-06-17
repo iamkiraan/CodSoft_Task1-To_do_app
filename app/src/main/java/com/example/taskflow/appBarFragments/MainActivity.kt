@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         enableEdgeToEdge()
         Replace(HomeFragment())
+        //fragment wala kaam
         binding.bottomNav.setOnItemSelectedListener {
 
             when (it.itemId) {
@@ -32,6 +33,8 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
+
     private fun Replace(fragment : Fragment) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()

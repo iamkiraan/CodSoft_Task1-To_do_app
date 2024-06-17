@@ -1,6 +1,7 @@
 package com.example.taskflow
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -28,6 +29,7 @@ class ResgisterActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
 
         binding.username.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -58,10 +60,12 @@ class ResgisterActivity : AppCompatActivity() {
 
         binding.createAccount.setOnClickListener {
             if (validateUsername() && validateEmail() && validatePassword()) {
-
                 Toast.makeText(this, "Account creation successful", Toast.LENGTH_SHORT).show()
-                saveUserData(binding.username.toString().trim(),
-                    binding.email.text.trim().toString(),binding.password.text.toString())
+                saveUserData(
+                    binding.username.text.toString().trim(),
+                    binding.email.text.toString().trim(),
+                    binding.password.text.toString()
+                )
                 val intent = Intent(this@ResgisterActivity, MainActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -71,12 +75,13 @@ class ResgisterActivity : AppCompatActivity() {
 
     private fun saveUserData(username: String, email: String, password: String) {
         val sharedPref = getSharedPreferences("UserPrefs", MODE_PRIVATE)
-        with(sharedPref.edit()){
-            putString("username",username)
-            putString("email",email)
-            putString("password",password)
+        with(sharedPref.edit()) {
+            putString("username", username)
+            putString("email", email)
+            putString("password", password)
+            putBoolean("isRegistered", true)
+            apply()
         }
-
     }
 
     private fun validateUsername(): Boolean {
@@ -103,7 +108,7 @@ class ResgisterActivity : AppCompatActivity() {
 
     private fun validatePassword(): Boolean {
         val password = binding.password.text.toString().trim()
-        return if (password.isEmpty()||password.length<=8) {
+        return if (password.isEmpty() || password.length <= 8) {
             binding.password.setBackgroundResource(R.drawable.incorrect_edittext)
             false
         } else {

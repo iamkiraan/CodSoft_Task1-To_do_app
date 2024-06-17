@@ -3,12 +3,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context=".appBarFragments.HomeFragment">
-    <TextView
-        android:layout_width="wrap_content"
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-/>
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <ImageView
+            android:id="@+id/personPic"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/person"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+            <TextView
+                android:id="@+id/greeting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Good Morning"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/personName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="name"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/notification"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:clickable="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="50dp"
+            android:focusable="true"
+            android:src="@drawable/outline_notifications_24"/>
+        <ImageView
+            android:id="@+id/settings"
+            android:layout_width="30dp"
+            android:clickable="true"
+            android:layout_height="30dp"
+            android:focusable="true"
+            android:src="@drawable/baseline_settings_24"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"/>
+
+
+
+    </LinearLayout>
+
+
+
 
 
 

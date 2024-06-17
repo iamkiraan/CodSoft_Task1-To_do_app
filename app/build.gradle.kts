@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
 }
 
+
 android {
     namespace = "com.example.taskflow"
     compileSdk = 34
@@ -56,7 +57,9 @@ dependencies {
 
     // dots indicatior
     implementation(libs.dotsindicator)
-    
+
+
+
 
 
 }
