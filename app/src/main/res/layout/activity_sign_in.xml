@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".ResgisterActivity">
+    tools:context=".SignInActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,27 +29,13 @@
             android:textColor="@color/Splash_screen"/>
     </LinearLayout>
     <TextView
-        android:layout_marginTop="80dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Username"
-        android:textColor="@color/black"/>
-    <EditText
-        android:id="@+id/username"
-        android:padding="10dp"
-        android:inputType="text"
-        android:layout_marginTop="4dp"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@drawable/edittext"/>
-    <TextView
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email"
         android:textColor="@color/black"/>
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/emailS"
         android:inputType="textEmailAddress"
         android:layout_marginTop="4dp"
         android:layout_width="match_parent"
@@ -65,7 +51,7 @@
         android:textColor="@color/black"/>
     <EditText
         android:padding="10dp"
-        android:id="@+id/password"
+        android:id="@+id/passwordS"
         android:inputType="textPassword"
         android:password="true"
         android:layout_marginTop="10dp"
@@ -81,12 +67,12 @@
         android:id="@+id/checkBx"/>
 
     <Button
-        android:id="@+id/createAccount"
-        android:layout_marginTop="110dp"
+        android:id="@+id/signinAccount"
+        android:layout_marginTop="100dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="create account"
+        android:text="sign in"
         android:textColor="@color/white"
         android:background="@drawable/button_shape"
         />

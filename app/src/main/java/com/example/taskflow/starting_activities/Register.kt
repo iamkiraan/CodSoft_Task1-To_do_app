@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.taskflow.R
 import com.example.taskflow.ResgisterActivity
+import com.example.taskflow.SignInActivity
 import com.example.taskflow.databinding.ActivityRegisterBinding
 import com.example.taskflow.databinding.ActivityResgisterBinding
 
@@ -21,6 +22,11 @@ class Register : AppCompatActivity() {
         enableEdgeToEdge()
         binding.getStarted.setOnClickListener{
             val intent = Intent(this@Register,ResgisterActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        binding.signIn.setOnClickListener{
+            val intent = Intent(this@Register,SignInActivity::class.java)
             startActivity(intent)
             finish()
         }

@@ -8,5 +8,5 @@
     <color name="boarding2">#a5e28d</color>
     <color name="bottom_nav_background">#FFFFFF</color>
     <color name="bottom_nav_item_color">#000000</color>
-    <color name="bottom_nav_item_color_selected">#FF0000</color>
+    <color name="red">#FF0000</color>
 </resources>
