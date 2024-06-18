@@ -11,4 +11,12 @@
     <color name="red">#FF0000</color>
     <color name="folder_color">#dceaf7</color>
     <color name="blue">#02ccfe</color>
+    <color name="circle">@android:color/holo_blue_bright</color>
+    <color name="circle2">@android:color/holo_red_dark</color>
+    <color name="circle3">@android:color/holo_green_dark</color>
+    <color name="circle4">@android:color/black</color>
+    <color name="circle5">@android:color/holo_purple</color>
+    <color name="circle6">@android:color/holo_orange_light</color>
+    <color name="circle7">@android:color/darker_gray</color>
+
 </resources>

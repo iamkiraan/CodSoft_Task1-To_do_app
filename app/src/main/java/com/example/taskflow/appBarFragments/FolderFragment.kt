@@ -1,60 +1,81 @@
 package com.example.taskflow.appBarFragments
 
+import android.app.Activity.RESULT_OK
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.taskflow.FolderCreation.CreateFolder
+import com.example.taskflow.FolderCreation.FolderAdapter
+import com.example.taskflow.FolderCreation.FolderDataClass
 import com.example.taskflow.R
+import com.example.taskflow.databinding.FragmentFolderBinding
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [FolderFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FolderFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentFolderBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var folderList: ArrayList<FolderDataClass>
+    private lateinit var folderAdapter: FolderAdapter
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var addFolderContainer: LinearLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_folder, container, false)
+        _binding = FragmentFolderBinding.inflate(inflater, container, false)
+        val view = binding.root
+
+        // Initialize RecyclerView and load folder list
+        recyclerView = binding.recyclerView
+        addFolderContainer = binding.addFolderContainer
+        loadFolderList()
+
+        // Setup RecyclerView
+        folderAdapter = FolderAdapter(requireContext(), folderList)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = folderAdapter
+
+        addFolderContainer.setOnClickListener {
+            val intent = Intent(requireContext(), CreateFolder::class.java)
+            startActivityForResult(intent, 100)
+        }
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FolderFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FolderFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun loadFolderList() {
+        val sharedPreferences = requireContext().getSharedPreferences("com.example.taskflow.PREFERENCE_FILE_KEY", Context.MODE_PRIVATE)
+        val json = sharedPreferences.getString("folders", null)
+        folderList = if (json != null) {
+            val type = object : TypeToken<List<FolderDataClass>>() {}.type
+            Gson().fromJson(json, type)
+        } else {
+            ArrayList()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 100 && resultCode == RESULT_OK) {
+            // Refresh folder list after new folder creation
+            loadFolderList()
+            folderAdapter.notifyDataSetChanged()
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

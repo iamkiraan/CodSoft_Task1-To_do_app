@@ -1,4 +1,4 @@
-import android.databinding.tool.writer.ViewBinding
+
 
 plugins {
     alias(libs.plugins.android.application)
@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.firebase.crashlytics.buildtools)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -57,6 +58,9 @@ dependencies {
 
     // dots indicatior
     implementation(libs.dotsindicator)
+
+    //GSon
+    implementation(libs.gson)
 
 
 

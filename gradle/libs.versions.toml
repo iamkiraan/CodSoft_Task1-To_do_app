@@ -3,6 +3,7 @@ agp = "8.4.1"
 chipNavigationBar = "1.4.0"
 circleindicator = "2.1.6'"
 dotsindicator = "4.2"
+gson = "2.11.0"
 horizontalcalendar = "1.1.7"
 horizontalcalendarview = "v1.0.0"
 kotlin = "1.9.0"
@@ -16,12 +17,14 @@ material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
 materialCalendarview = "2.0.1"
+firebaseCrashlyticsBuildtools = "3.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 chip-navigation-bar = { module = "com.github.ismaeldivita:chip-navigation-bar", version.ref = "chipNavigationBar" }
 circleindicator = { module = "me.relex:circleindicator", version.ref = "circleindicator" }
 dotsindicator = { module = "com.tbuonomo:dotsindicator", version.ref = "dotsindicator" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 horizontalcalendar = { module = "devs.mulham.horizontalcalendar:horizontalcalendar", version.ref = "horizontalcalendar" }
 horizontalcalendarview = { module = "com.github.akshittyagi205:HorizontalCalendarView", version.ref = "horizontalcalendarview" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -33,6 +36,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 material-calendarview = { module = "com.github.prolificinteractive:material-calendarview", version.ref = "materialCalendarview" }
+firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "firebase-crashlytics-buildtools", version.ref = "firebaseCrashlyticsBuildtools" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
