@@ -11,15 +11,11 @@ import com.example.taskflow.R
 class FolderAdapter(private val context: Context, private val folderList: ArrayList<FolderDataClass>) :
     RecyclerView.Adapter<FolderAdapter.FolderViewHolder>() {
 
-    inner class FolderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val folderName: TextView = itemView.findViewById(R.id.FolderName)
-        val folderCount: TextView = itemView.findViewById(R.id.folderCount)
-    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FolderViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.add_folder, parent, false)
-        return FolderViewHolder(view)
+        val inflater = LayoutInflater.from(parent.context).inflate(R.layout.add_folder, parent, false)
+        return FolderViewHolder(inflater)
     }
 
     override fun getItemCount(): Int {
@@ -28,8 +24,11 @@ class FolderAdapter(private val context: Context, private val folderList: ArrayL
 
     override fun onBindViewHolder(holder: FolderViewHolder, position: Int) {
         val folderData = folderList[position]
-        holder.folderName.text = folderData.folderName
-        // Set other views as needed (e.g., folder count)
-        holder.folderCount.text = "Tasks: ${folderData.taskList}"
+        holder.FolderName.text = folderData.folderName
+        holder.FolderCount.text = "Tasks: ${folderData.taskList}"
+    }
+    inner class FolderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val FolderName: TextView = itemView.findViewById(R.id.folderName)
+        val FolderCount: TextView = itemView.findViewById(R.id.foldercount)
     }
 }

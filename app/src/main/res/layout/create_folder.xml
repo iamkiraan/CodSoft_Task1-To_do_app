@@ -13,6 +13,7 @@ tools:context=".FolderCreation.CreateFolder">
     android:orientation="horizontal"
     android:padding="20dp">
     <ImageView
+        android:layout_marginTop="5dp"
         android:id="@+id/arrowFolder"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -22,7 +23,7 @@ tools:context=".FolderCreation.CreateFolder">
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Create Folder"
-        android:layout_marginStart="75dp"
+        android:layout_marginStart="45dp"
         android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="@color/Splash_screen"/>

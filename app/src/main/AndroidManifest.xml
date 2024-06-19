@@ -14,7 +14,8 @@
         tools:targetApi="31">
         <activity
             android:name=".FolderCreation.CreateFolder"
-            android:exported="false" />
+            android:exported="false"
+            android:label="create folder"/>
         <activity
             android:name=".SignInActivity"
             android:exported="false" />

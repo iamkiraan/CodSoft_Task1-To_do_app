@@ -2,54 +2,46 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="700dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context=".appBarFragments.FolderFragment">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Folders"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginStart="150dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"
+        android:layout_marginTop="70dp" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="75dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recyclerView"/>
 
-
-    <LinearLayout
-        android:id="@+id/addFolderContainer"
-        android:layout_width="match_parent"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="20dp"
-        android:gravity="center">
-        <androidx.cardview.widget.CardView
-            android:id="@+id/createCard"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            app:cardBackgroundColor="@color/folder_color"
-            app:cardCornerRadius="12dp"
-            android:background="@drawable/folder_create">
-            <ImageButton
-                android:id="@+id/AddFolders"
-                android:layout_gravity="center"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="16dp"
-                android:background="@drawable/baseline_add_24"
-                />
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Folder"
-                android:layout_marginTop="50dp"
-                android:layout_gravity="center"
-                android:textColor="@color/blue"
-                android:textSize="14sp"/>
+        android:id="@+id/addFolder"
+        android:layout_gravity="bottom"
+        android:contentDescription="add"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="310dp"
+        android:src="@drawable/baseline_add_24_"/>
 
 
 
-        </androidx.cardview.widget.CardView>
 
-    </LinearLayout>
+
+
 
 
 
