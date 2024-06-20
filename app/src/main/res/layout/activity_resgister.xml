@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="ͲօᎠօ"
+            android:text="Task Flow"
             android:layout_marginStart="75dp"
             android:textSize="30sp"
             android:textStyle="bold"

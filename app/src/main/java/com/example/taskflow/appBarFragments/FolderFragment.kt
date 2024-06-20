@@ -1,10 +1,10 @@
 package com.example.taskflow.appBarFragments
 
 import android.app.Activity
-import android.app.Activity.RESULT_OK
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +18,7 @@ import com.example.taskflow.R
 import com.example.taskflow.databinding.FragmentFolderBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+
 class FolderFragment : Fragment() {
 
     private var _binding: FragmentFolderBinding? = null
@@ -38,8 +39,8 @@ class FolderFragment : Fragment() {
         loadFolderList()
 
         // Setup RecyclerView
-        folderAdapter = FolderAdapter(requireContext(), folderList)
-        recyclerView.layoutManager = GridLayoutManager(requireContext(),2)
+        folderAdapter = FolderAdapter(this, folderList)
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         recyclerView.adapter = folderAdapter
 
         binding.addFolder.setOnClickListener {
@@ -64,19 +65,16 @@ class FolderFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 100 && resultCode == Activity.RESULT_OK) {
-
             val newFolderJson = data?.getStringExtra("newFolder")
-            val newFolder = Gson().fromJson(newFolderJson, FolderDataClass::class.java)
-
-            val selectedColorResId = data?.getIntExtra("selectedColor", R.color.white)
-
-
-            folderList.add(newFolder)
-            folderAdapter.notifyDataSetChanged()
-
-
-            saveFolderList()
-
+            if (newFolderJson != null) {
+                val newFolder = Gson().fromJson(newFolderJson, FolderDataClass::class.java)
+                folderList.add(newFolder)
+                folderAdapter.notifyItemInserted(folderList.size - 1)
+                saveFolderList()
+                Log.d("FolderFragment", "New folder added: $newFolder")
+            } else {
+                Log.e("FolderFragment", "New folder data is null")
+            }
         }
     }
 
@@ -85,6 +83,12 @@ class FolderFragment : Fragment() {
         val editor = sharedPreferences.edit()
         editor.putString("folders", Gson().toJson(folderList))
         editor.apply()
+    }
+
+    fun onFolderDeleted(position: Int) {
+        folderList.removeAt(position)
+        folderAdapter.notifyItemRemoved(position)
+        saveFolderList()
     }
 
     override fun onDestroyView() {

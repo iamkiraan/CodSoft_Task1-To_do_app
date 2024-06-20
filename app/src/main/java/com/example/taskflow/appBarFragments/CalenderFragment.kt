@@ -1,60 +1,114 @@
 package com.example.taskflow.appBarFragments
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.taskflow.R
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.taskflow.Calender.CalenderAdapter
+import com.example.taskflow.Calender.CalenderDataClass
+import com.example.taskflow.databinding.DialogAddEventBinding
+import com.example.taskflow.databinding.FragmentCalenderBinding
+import java.util.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [CalenderFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CalenderFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentCalenderBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var adapter: CalenderAdapter
+    private var eventList = ArrayList<CalenderDataClass>()
+    private lateinit var sharedPreferences: SharedPreferences
+    private var selectedDate: Long = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_calender, container, false)
+        _binding = FragmentCalenderBinding.inflate(inflater, container, false)
+        val view = binding.root
+
+        sharedPreferences = requireContext().getSharedPreferences("EventPrefs", Context.MODE_PRIVATE)
+
+        binding.eventRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        adapter = CalenderAdapter(this, eventList)
+        binding.eventRecyclerView.adapter = adapter
+
+        binding.calenderEv.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            selectedDate = Calendar.getInstance().apply {
+                set(year, month, dayOfMonth, 0, 0, 0)
+                set(Calendar.MILLISECOND, 0)
+            }.timeInMillis
+            openEventDialog()
+        }
+
+        loadEvents()
+        deletePastEvents()
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CalenderFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CalenderFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun openEventDialog() {
+        val builder = AlertDialog.Builder(requireContext())
+        val inflater = LayoutInflater.from(requireContext())
+        val dialogBinding = DialogAddEventBinding.inflate(inflater)
+        builder.setView(dialogBinding.root)
+
+        builder.setPositiveButton("Add Event") { dialog, _ ->
+            val eventName = dialogBinding.eventNameEditText.text.toString()
+            if (eventName.isNotEmpty()) {
+                val event = CalenderDataClass(selectedDate, eventName)
+                eventList.add(event)
+                adapter.notifyDataSetChanged()
+                saveEvents()
             }
+            dialog.dismiss()
+        }
+        builder.setNegativeButton("Cancel") { dialog, _ ->
+            dialog.dismiss()
+        }
+
+        builder.create().show()
+    }
+
+    private fun saveEvents() {
+        val editor = sharedPreferences.edit()
+        val eventSet = eventList.map { "${it.date}::${it.text}" }.toSet()
+        editor.putStringSet("events", eventSet)
+        editor.apply()
+    }
+
+    private fun loadEvents() {
+        val eventSet = sharedPreferences.getStringSet("events", emptySet())
+        eventList.clear()
+        eventSet?.forEach {
+            val parts = it.split("::")
+            if (parts.size == 2) {
+                val date = parts[0].toLong()
+                val text = parts[1]
+                eventList.add(CalenderDataClass(date, text))
+            }
+        }
+        adapter.notifyDataSetChanged()
+    }
+
+    private fun deletePastEvents() {
+        val currentTime = System.currentTimeMillis()
+        eventList = eventList.filter { it.date >= currentTime } as ArrayList<CalenderDataClass>
+        saveEvents()
+        adapter.notifyDataSetChanged()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+    fun deleteEventFromSharedPreferences(event: CalenderDataClass) {
+        val eventSet = sharedPreferences.getStringSet("events", emptySet())?.toMutableSet()
+        eventSet?.remove("${event.date}::${event.text}")
+        sharedPreferences.edit().putStringSet("events", eventSet).apply()
     }
 }
