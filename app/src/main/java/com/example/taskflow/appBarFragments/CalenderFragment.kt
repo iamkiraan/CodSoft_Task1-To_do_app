@@ -62,7 +62,7 @@ class CalenderFragment : Fragment() {
             if (eventName.isNotEmpty()) {
                 val event = CalenderDataClass(selectedDate, eventName)
                 eventList.add(event)
-                adapter.notifyDataSetChanged()
+                adapter.notifyItemInserted(eventList.size - 1)
                 saveEvents()
             }
             dialog.dismiss()
@@ -74,12 +74,14 @@ class CalenderFragment : Fragment() {
         builder.create().show()
     }
 
+
     private fun saveEvents() {
         val editor = sharedPreferences.edit()
         val eventSet = eventList.map { "${it.date}::${it.text}" }.toSet()
         editor.putStringSet("events", eventSet)
         editor.apply()
     }
+
 
     private fun loadEvents() {
         val eventSet = sharedPreferences.getStringSet("events", emptySet())
@@ -95,6 +97,7 @@ class CalenderFragment : Fragment() {
         adapter.notifyDataSetChanged()
     }
 
+
     private fun deletePastEvents() {
         val currentTime = System.currentTimeMillis()
         eventList = eventList.filter { it.date >= currentTime } as ArrayList<CalenderDataClass>
@@ -106,6 +109,7 @@ class CalenderFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
     fun deleteEventFromSharedPreferences(event: CalenderDataClass) {
         val eventSet = sharedPreferences.getStringSet("events", emptySet())?.toMutableSet()
         eventSet?.remove("${event.date}::${event.text}")

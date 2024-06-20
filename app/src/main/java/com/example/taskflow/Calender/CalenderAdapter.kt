@@ -29,14 +29,12 @@ class CalenderAdapter(
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         val eventDetails = eventList[position]
 
-        // Format date to show only date part
         val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         val formattedDate = dateFormat.format(Date(eventDetails.date))
 
         holder.eventName.text = eventDetails.text
         holder.eventDate.text = formattedDate
 
-        // Handle more options click
         holder.moreOptions.setOnClickListener {
             showPopupMenu(holder.moreOptions, position)
         }
