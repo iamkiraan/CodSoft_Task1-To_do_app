@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:layout_gravity="center"
+    android:layout_height="match_parent"
+    tools:context=".Calender.AddEvent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp">
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/arrowFolder"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/baseline_arrow_back_24"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Add Event"
+            android:layout_marginStart="60dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@color/Splash_screen"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"
+        android:layout_marginTop="1dp" />
+    <TextView
+        android:layout_marginTop="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event Name"
+        android:textColor="@color/black"/>
+    <EditText
+        android:id="@+id/EventName"
+        android:padding="10dp"
+        android:inputType="text"
+        android:layout_marginTop="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/edittext"/>
+    <CheckBox
+        android:id="@+id/notifyMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Notify me"
+        />
+
+
+
+    <Button
+        android:id="@+id/createEvent"
+        android:layout_marginTop="90dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="add event"
+        android:textColor="@color/white"
+        android:background="@drawable/button_shape"
+        />
+
+
+
+</LinearLayout>

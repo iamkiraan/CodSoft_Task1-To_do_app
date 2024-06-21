@@ -18,7 +18,8 @@ class CalenderAdapter(
 ) : RecyclerView.Adapter<CalenderAdapter.EventViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
-        val inflater = LayoutInflater.from(parent.context).inflate(R.layout.event_on_calender, parent, false)
+        val inflater = LayoutInflater.from(parent.context)
+            .inflate(R.layout.event_on_calender, parent, false)
         return EventViewHolder(inflater)
     }
 
@@ -26,7 +27,9 @@ class CalenderAdapter(
         return eventList.size
     }
 
-    override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: EventViewHolder,
+        position: Int) {
         val eventDetails = eventList[position]
 
         val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -52,19 +55,12 @@ class CalenderAdapter(
         popupMenu.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_delete -> {
-                    deleteEvent(position)
+                    fragment.deleteEventFromSharedPreferences(eventList[position])
                     true
                 }
                 else -> false
             }
         }
         popupMenu.show()
-    }
-
-    private fun deleteEvent(position: Int) {
-        val deletedEvent = eventList[position]
-        eventList.removeAt(position)
-        notifyItemRemoved(position)
-        fragment.deleteEventFromSharedPreferences(deletedEvent)
     }
 }

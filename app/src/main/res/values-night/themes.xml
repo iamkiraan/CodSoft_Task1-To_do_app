@@ -3,5 +3,8 @@
     <style name="Base.Theme.TaskFlow" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/Boarding1</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/Splash_screen</item>
     </style>
 </resources>

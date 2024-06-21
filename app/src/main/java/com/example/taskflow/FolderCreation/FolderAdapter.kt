@@ -12,11 +12,14 @@ import com.example.taskflow.R
 import com.example.taskflow.appBarFragments.FolderFragment
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
-class FolderAdapter(private val fragment: FolderFragment, private var folderList: ArrayList<FolderDataClass>) :
+class FolderAdapter(
+    private val fragment: FolderFragment,
+    private var folderList: ArrayList<FolderDataClass>) :
     RecyclerView.Adapter<FolderAdapter.FolderViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FolderViewHolder {
-        val inflater = LayoutInflater.from(parent.context).inflate(R.layout.add_folder, parent, false)
+        val inflater = LayoutInflater.from(parent.context)
+            .inflate(R.layout.add_folder, parent, false)
         return FolderViewHolder(inflater)
     }
 
@@ -24,7 +27,9 @@ class FolderAdapter(private val fragment: FolderFragment, private var folderList
         return folderList.size
     }
 
-    override fun onBindViewHolder(holder: FolderViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: FolderViewHolder,
+        position: Int) {
         val folderData = folderList[position]
         holder.FolderName.text = folderData.folderName
 

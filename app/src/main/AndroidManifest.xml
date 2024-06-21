@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
+        android:name=".Calender.notificationChannel"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,9 +16,12 @@
         android:theme="@style/Theme.TaskFlow"
         tools:targetApi="31">
         <activity
+            android:name=".Calender.AddEvent"
+            android:exported="false" />
+        <activity
             android:name=".FolderCreation.CreateFolder"
             android:exported="false"
-            android:label="create folder"/>
+            android:label="create folder" />
         <activity
             android:name=".SignInActivity"
             android:exported="false" />
