@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/black"
-        android:layout_marginTop="70dp" />
+        android:layout_marginTop="60dp" />
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -46,12 +46,13 @@ class CalenderFragment : Fragment() {
         recyclerView.adapter = eventAdapter
 
         // Handle calendar date click
-        binding.calenderEv.setOnDateChangeListener { _, year, month, dayOfMonth ->
+        binding.calenderEv.setOnDateChangeListener { view, year, month, dayOfMonth ->
             val calendar = Calendar.getInstance()
             calendar.set(year, month, dayOfMonth)
             val selectedDate = calendar.timeInMillis
             navigateToCreateEvent(selectedDate)
         }
+
 
         return view
     }
@@ -72,7 +73,6 @@ class CalenderFragment : Fragment() {
         intent.putExtra("selectedDate", selectedDate)
         startActivityForResult(intent, CREATE_EVENT_REQUEST_CODE)
     }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == CREATE_EVENT_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
@@ -91,6 +91,7 @@ class CalenderFragment : Fragment() {
         }
     }
 
+
     private fun saveEvents() {
         val sharedPreferences = requireContext().getSharedPreferences("EventPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
@@ -103,6 +104,7 @@ class CalenderFragment : Fragment() {
         saveEvents()
         eventAdapter.notifyDataSetChanged()
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

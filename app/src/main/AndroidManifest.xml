@@ -16,6 +16,9 @@
         android:theme="@style/Theme.TaskFlow"
         tools:targetApi="31">
         <activity
+            android:name=".addTask.AddTask"
+            android:exported="false" />
+        <activity
             android:name=".Calender.AddEvent"
             android:exported="false" />
         <activity

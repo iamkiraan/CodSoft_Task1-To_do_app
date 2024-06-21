@@ -18,5 +18,6 @@
     <color name="circle5">@android:color/holo_purple</color>
     <color name="circle6">@android:color/holo_orange_light</color>
     <color name="circle7">@android:color/darker_gray</color>
+    <color name="steel_blue">#4682B4</color>
 
 </resources>
