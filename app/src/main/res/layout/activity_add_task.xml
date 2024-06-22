@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".addTask.AddTask">
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,8 +28,191 @@
             android:textStyle="bold"
             android:textColor="@color/Splash_screen"/>
     </LinearLayout>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        app:cardCornerRadius="15dp"
+        app:cardBackgroundColor="@color/textView"
+        android:elevation="8dp">
+
+        <EditText
+            android:id="@+id/tasksIn"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:hint="add a new task"
+            android:gravity="top|start"
+            android:padding="16dp"
+            android:background="@null"
+            android:inputType="textMultiLine"
+            android:imeOptions="actionDone"
+            android:scrollbars="vertical"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:background="@color/black"
+            android:layout_marginTop="250dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:paddingBottom="10dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="14dp"
+                android:paddingBottom="2dp"
+                android:src="@drawable/baseline_format_list_bulleted_add_24"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/circle5"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="20dp"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/baseline_bookmark_border_24"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="14dp"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/baseline_attachment_24"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="14dp"/>
+
+        </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="15dp"
+        app:cardBackgroundColor="@color/textView"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:elevation="8dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Priority"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:layout_marginStart="20dp"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom"
+            android:paddingBottom="25dp">
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:background="@drawable/green_button"
+                android:layout_marginStart="20dp"
+                android:text="Low"
+                android:textColor="@color/green"/>
+            <Button
+                android:layout_width="70dp"
+                android:layout_height="20dp"
+                android:background="@drawable/button_blue"
+                android:layout_marginStart="20dp"
+                android:text="Medium"
+                android:textColor="@color/blue"/>
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:background="@drawable/button_red"
+                android:layout_marginStart="20dp"
+                android:text="High"
+                android:textColor="@color/red"/>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="15dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        app:cardBackgroundColor="@color/textView">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/baseline_date_range_24"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="25dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set Date"
+           android:layout_gravity="center_vertical"
+            android:layout_marginStart="60dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:src="@drawable/baseline_keyboard_arrow_down_24"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"/>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="15dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        app:cardBackgroundColor="@color/textView">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/baseline_folder_open_24"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="25dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Folder"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="60dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:src="@drawable/baseline_keyboard_arrow_down_24"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/button_shape"
+        android:text="Create Task"
+        android:textColor="@color/white"/>
+
+
 
 </LinearLayout>

@@ -19,5 +19,7 @@
     <color name="circle6">@android:color/holo_orange_light</color>
     <color name="circle7">@android:color/darker_gray</color>
     <color name="steel_blue">#4682B4</color>
+    <color name="textView">#f3f4f8</color>
+    <color name="green">#00FF00</color>
 
 </resources>
