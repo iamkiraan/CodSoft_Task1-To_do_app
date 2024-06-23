@@ -1,0 +1,5 @@
+<!-- res/drawable/normal_day_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="8dp"/>
+</shape>

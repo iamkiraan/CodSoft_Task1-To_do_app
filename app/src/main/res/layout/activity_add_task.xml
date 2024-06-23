@@ -112,27 +112,31 @@
             android:textSize="16sp"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:orientation="horizontal"
-            android:layout_gravity="bottom"
-            android:paddingBottom="25dp">
+            android:layout_gravity="bottom">
             <Button
                 android:layout_width="60dp"
-                android:layout_height="20dp"
+                android:layout_height="30dp"
                 android:background="@drawable/green_button"
                 android:layout_marginStart="20dp"
                 android:text="Low"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/low"
+                android:layout_marginBottom="10dp"
                 android:textColor="@color/green"/>
             <Button
                 android:layout_width="70dp"
-                android:layout_height="20dp"
+                android:layout_height="30dp"
+                android:id="@+id/medium"
                 android:background="@drawable/button_blue"
                 android:layout_marginStart="20dp"
                 android:text="Medium"
                 android:textColor="@color/blue"/>
             <Button
                 android:layout_width="60dp"
-                android:layout_height="20dp"
+                android:layout_height="30dp"
+                android:id="@+id/high"
                 android:background="@drawable/button_red"
                 android:layout_marginStart="20dp"
                 android:text="High"

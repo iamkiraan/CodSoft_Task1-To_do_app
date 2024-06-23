@@ -39,7 +39,9 @@ class FolderFragment : Fragment() {
         loadFolderList()
 
         // Setup RecyclerView
-        folderAdapter = FolderAdapter(this, folderList)
+        folderAdapter = FolderAdapter(requireContext(), folderList) { position ->
+            onFolderDeleted(position)
+        }
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         recyclerView.adapter = folderAdapter
 

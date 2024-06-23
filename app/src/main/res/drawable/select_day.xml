@@ -1,0 +1,9 @@
+<!-- res/drawable/selected_day_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <size
+        android:width="60dp"
+        android:height="10dp"/>
+    <solid android:color="@color/Splash_screen"/>
+    <corners android:radius="8dp"/>
+</shape>

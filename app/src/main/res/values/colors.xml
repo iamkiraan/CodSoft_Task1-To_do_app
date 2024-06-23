@@ -21,5 +21,10 @@
     <color name="steel_blue">#4682B4</color>
     <color name="textView">#f3f4f8</color>
     <color name="green">#00FF00</color>
+    <color name="yearly">#e8f1fa</color>
+    <color name="monthly">#ffefe7</color>
+    <color name="weekly">#F4e8ec</color>
+    <color name="daily">#e4f6dc</color>
+    <color name="orange">#FFA500</color>
 
 </resources>

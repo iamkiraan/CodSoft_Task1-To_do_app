@@ -1,0 +1,8 @@
+<!-- res/drawable/current_day_background.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <item android:drawable="@drawable/selected_day_background" android:state_selected="true"/>
+    <item android:drawable="@drawable/normal_day_background"/>
+
+
+</selector>

@@ -1,0 +1,5 @@
+<!-- res/drawable/current_day_background_text_color.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@android:color/white" android:state_selected="true"/>
+    <item android:color="@android:color/black"/>
+</selector>

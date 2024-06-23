@@ -1,0 +1,30 @@
+<!-- item_day.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="47dp"
+    android:layout_height="40dp"
+    android:orientation="vertical"
+    android:textAlignment="center"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/select_day">
+
+    <TextView
+        android:id="@+id/dayName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:textColor="@drawable/current_day_text_color"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/dayDate"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@drawable/current_day_text_color"
+        android:gravity="center"
+        android:padding="4dp"/>
+</LinearLayout>

@@ -5,18 +5,24 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.taskflow.R
 
 import com.example.taskflow.databinding.ActivityMainBinding
+import com.example.taskflow.home.FolderViewModel
 
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         enableEdgeToEdge()
+
+
+
         Replace(HomeFragment())
         //fragment wala kaam
         binding.bottomNav.setOnItemSelectedListener {

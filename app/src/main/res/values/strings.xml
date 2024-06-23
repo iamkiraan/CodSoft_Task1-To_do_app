@@ -4,10 +4,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="second">Create <b>lists</b>,add <b>tasks</b>,set <b>deadLines</b>,\nassign <b>priorities</b>, and track your\n<b>progress</b> with ease.</string>
     <string name="third">Provide yourself a better way to <b>dream, learn</b> and <b>grow</b>.</string>
-        <string-array name="spinner_items">
-            <item>Upcomming</item>
-            <item>Saved</item>
-        </string-array>
+    <string-array name="spinner_items">
+        <item>Upcomming</item>
+        <item>Saved</item>
+    </string-array>
 
 
 </resources>

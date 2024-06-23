@@ -1,5 +1,6 @@
 package com.example.taskflow.FolderCreation
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,11 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.taskflow.R
 import com.example.taskflow.appBarFragments.FolderFragment
 import com.google.android.material.bottomsheet.BottomSheetDialog
-
 class FolderAdapter(
-    private val fragment: FolderFragment,
-    private var folderList: ArrayList<FolderDataClass>) :
-    RecyclerView.Adapter<FolderAdapter.FolderViewHolder>() {
+    private val context: Context,
+    private var folderList: ArrayList<FolderDataClass>,
+    private val folderDeletedCallback: (Int) -> Unit
+) : RecyclerView.Adapter<FolderAdapter.FolderViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FolderViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -27,9 +28,7 @@ class FolderAdapter(
         return folderList.size
     }
 
-    override fun onBindViewHolder(
-        holder: FolderViewHolder,
-        position: Int) {
+    override fun onBindViewHolder(holder: FolderViewHolder, position: Int) {
         val folderData = folderList[position]
         holder.FolderName.text = folderData.folderName
 
@@ -39,11 +38,11 @@ class FolderAdapter(
     }
 
     private fun showBottomSheetDialog(position: Int) {
-        val bottomSheetDialog = BottomSheetDialog(fragment.requireContext())
-        val bottomSheetView = LayoutInflater.from(fragment.requireContext()).inflate(R.layout.bottom_sheet_delete_confirmation, null)
+        val bottomSheetDialog = BottomSheetDialog(context)
+        val bottomSheetView = LayoutInflater.from(context).inflate(R.layout.bottom_sheet_delete_confirmation, null)
 
         bottomSheetView.findViewById<Button>(R.id.confirm_delete).setOnClickListener {
-            fragment.onFolderDeleted(position)
+            folderDeletedCallback(position)
             bottomSheetDialog.dismiss()
         }
 

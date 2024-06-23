@@ -12,7 +12,7 @@ class AddEvent : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding =ActivityAddEventBinding.inflate(layoutInflater)
+        binding = ActivityAddEventBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.createEvent.setOnClickListener {
@@ -26,7 +26,5 @@ class AddEvent : AppCompatActivity() {
                 finish()
             }
         }
-
-
     }
 }
