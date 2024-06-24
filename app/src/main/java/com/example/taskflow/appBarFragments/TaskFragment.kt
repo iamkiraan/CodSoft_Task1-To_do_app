@@ -10,6 +10,7 @@ import com.example.taskflow.R
 import com.example.taskflow.addTask.AddTask
 import com.example.taskflow.CustomSpinnerAdapter
 import com.example.taskflow.databinding.FragmentTaskBinding
+import com.example.taskflow.note.Daily
 
 class TaskFragment : Fragment() {
 
@@ -30,6 +31,12 @@ class TaskFragment : Fragment() {
         // Set up the addTask button click listener
         binding.addTask.setOnClickListener {
             val intent = Intent(requireContext(), AddTask::class.java)
+            startActivity(intent)
+        }
+
+        //daily work
+        binding.dailyWork.setOnClickListener{
+            val intent = Intent(requireContext(),Daily::class.java)
             startActivity(intent)
         }
 

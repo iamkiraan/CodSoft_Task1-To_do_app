@@ -20,6 +20,7 @@
             android:layout_height="30dp"
             android:src="@drawable/baseline_arrow_back_24"/>
         <TextView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add Task"
@@ -62,24 +63,28 @@
             android:paddingBottom="10dp"
             android:orientation="horizontal">
             <ImageView
+                android:id="@+id/bulletOtpions"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="14dp"
                 android:paddingBottom="2dp"
                 android:src="@drawable/baseline_format_list_bulleted_add_24"/>
             <ImageView
+                android:id="@+id/colorOptions"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/circle5"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="20dp"/>
             <ImageView
+                android:id="@+id/savedOtpions"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/baseline_bookmark_border_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="14dp"/>
             <ImageView
+                android:id="@+id/attachFileOptions"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/baseline_attachment_24"
@@ -145,6 +150,7 @@
 
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
+        android:id="@+id/SetDate"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
@@ -176,6 +182,7 @@
 
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
+        android:id="@+id/setFolder"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
@@ -208,6 +215,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
+        android:id="@+id/create_task"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"

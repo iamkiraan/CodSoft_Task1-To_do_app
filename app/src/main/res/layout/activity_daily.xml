@@ -41,8 +41,41 @@
         android:text="To Do"
         android:textColor="@color/orange"
         android:textStyle="bold"
-        android:padding="30dp"
-        android:textSize="18sp"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+
+        android:textSize="20sp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="-10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:id="@+id/recyclerDailyTask"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/baseline_add_circle_outline_24"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:text="Add Task"
+        android:layout_gravity="center_vertical"
+        android:textSize="18sp"
+        android:textColor="@color/orange"
+        android:id="@+id/addTaskOrange"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DONE"
+        android:textColor="@color/Splash_screen"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:textSize="20sp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:id="@+id/recyclerDailyDone"/>
 
 
 </LinearLayout>
