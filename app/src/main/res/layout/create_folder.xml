@@ -57,57 +57,13 @@ tools:context=".FolderCreation.CreateFolder">
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="15dp"
-    android:gravity="center">
+    android:padding="15dp">
     <ImageView
         android:id="@+id/circle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/circle_for_choose"
         android:layout_margin="10dp"/>
-    <ImageView
-        android:id="@+id/circle2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/circle2"
-        android:layout_margin="10dp"
-        />
-    <ImageView
-        android:id="@+id/circle3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/circle3"
-        android:layout_margin="10dp"
-        />
-    <ImageView
-        android:id="@+id/circle4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/circle4"
-        android:layout_margin="10dp"
-        />
-    <ImageView
-        android:id="@+id/circle5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/circle5"
-        android:layout_margin="10dp"
-        />
-    <ImageView
-        android:id="@+id/circle6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/circle6"
-        android:layout_margin="10dp"
-
-        />
-    <ImageView
-        android:id="@+id/circle7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/circle7"
-        android:layout_margin="10dp"
-        />
 </LinearLayout>
 
 

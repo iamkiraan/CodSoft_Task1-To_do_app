@@ -4,11 +4,14 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.taskflow.R
 import com.example.taskflow.databinding.CreateFolderBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+
 class CreateFolder : AppCompatActivity() {
 
     private var _binding: CreateFolderBinding? = null
@@ -57,29 +60,18 @@ class CreateFolder : AppCompatActivity() {
 
     private fun initializeClick() {
         binding.circle.setOnClickListener {
-            handleColorSelection(R.color.circle)
-        }
-        binding.circle2.setOnClickListener {
-            handleColorSelection(R.color.circle2)
-        }
-        binding.circle3.setOnClickListener {
-            handleColorSelection(R.color.circle3)
-        }
-        binding.circle4.setOnClickListener {
-            handleColorSelection(R.color.circle4)
-        }
-        binding.circle5.setOnClickListener {
-            handleColorSelection(R.color.circle5)
-        }
-        binding.circle6.setOnClickListener {
-            handleColorSelection(R.color.circle6)
-        }
-        binding.circle7.setOnClickListener {
-            handleColorSelection(R.color.circle7)
+            val randomColor = getRandomColor()
+            binding.foldername.setTextColor(ContextCompat.getColor(this, randomColor))
+            (binding.circle as ImageView).setColorFilter(ContextCompat.getColor(this, randomColor))
+            selectedColorResId = randomColor
         }
     }
 
-    private fun handleColorSelection(colorResId: Int) {
-        selectedColorResId = colorResId
+    private fun getRandomColor(): Int {
+        val colors = listOf(
+            R.color.red, R.color.blue, R.color.green,
+            R.color.black, R.color.purple, R.color.orange,R.color.boarding3,R.color.boarding2,R.color.steel_blue,R.color.circle7
+        )
+        return colors.random()
     }
 }

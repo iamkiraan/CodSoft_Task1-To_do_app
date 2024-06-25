@@ -1,6 +1,7 @@
 package com.example.taskflow.appBarFragments
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -48,6 +49,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.folderMore.setOnClickListener{
+            val intent = Intent(requireContext(),FolderFragment::class.java)
+            startActivity(intent)
+        }
 
         folderViewModel = ViewModelProvider(this).get(FolderViewModel::class.java)
 

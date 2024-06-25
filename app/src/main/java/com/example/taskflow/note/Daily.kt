@@ -1,5 +1,6 @@
 package com.example.taskflow.note
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Button
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.taskflow.R
 import com.example.taskflow.addTask.TaskAdapter
+import com.example.taskflow.appBarFragments.TaskFragment
 import com.example.taskflow.databinding.ActivityDailyBinding
 
 class Daily : AppCompatActivity() {
@@ -24,6 +26,13 @@ class Daily : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityDailyBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //back to task
+        binding.arrowFolder.setOnClickListener{
+            val intent = Intent(this,TaskFragment::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         // Load tasks from SharedPreferences
         activeTasks = TaskPreferences.getActiveTasks(this).toMutableList()

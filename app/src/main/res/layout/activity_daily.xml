@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Daily Tasks"
-            android:layout_marginStart="100dp"
+            android:layout_marginStart="70dp"
             android:textSize="30sp"
             android:textStyle="bold"
             android:textColor="@color/Splash_screen"/>

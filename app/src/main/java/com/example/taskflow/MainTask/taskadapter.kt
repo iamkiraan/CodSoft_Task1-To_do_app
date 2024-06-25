@@ -1,4 +1,5 @@
-package com.example.taskflow.FolderCreation
+package com.example.taskflow.MainTask
+
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,33 +8,29 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taskflow.R
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
-class FolderAdapter(
+class taskAdapter(
     private val context: Context,
-    private var folderList: ArrayList<FolderDataClass>,
+    private var folderList: ArrayList<TaskData>,
     private val folderDeletedCallback: (Int) -> Unit
-) : RecyclerView.Adapter<FolderAdapter.FolderViewHolder>() {
+) : RecyclerView.Adapter<taskAdapter.taskViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FolderViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): taskViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-            .inflate(R.layout.add_folder, parent, false)
-        return FolderViewHolder(inflater)
+            .inflate(R.layout.add_task, parent, false)
+        return taskViewHolder(inflater)
     }
 
     override fun getItemCount(): Int {
         return folderList.size
     }
 
-    override fun onBindViewHolder(holder: FolderViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: taskViewHolder, position: Int) {
         val folderData = folderList[position]
         holder.FolderName.text = folderData.folderName
-
-        // Set the folder name color
-        holder.FolderName.setTextColor(ContextCompat.getColor(context, folderData.colorResId))
 
         holder.deleteIcon.setOnClickListener {
             showBottomSheetDialog(position)
@@ -57,8 +54,11 @@ class FolderAdapter(
         bottomSheetDialog.show()
     }
 
-    inner class FolderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val FolderName: TextView = itemView.findViewById(R.id.folderName)
-        val deleteIcon: ImageView = itemView.findViewById(R.id.deleteFolder)
+    inner class taskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val FolderName: TextView = itemView.findViewById(R.id.taskFolderName)
+        val deleteIcon: ImageView = itemView.findViewById(R.id.deleteTask)
+        val taskN : TextView = itemView.findViewById(R.id.taskhere)
+        val timer : TextView = itemView.findViewById(R.id.timeronTask)
+        val deletetask : ImageView = itemView.findViewById(R.id.deleteTask)
     }
 }
