@@ -15,10 +15,11 @@ class AddEvent : AppCompatActivity() {
         binding = ActivityAddEventBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val selectedDate = intent.getLongExtra("selectedDate", 0)
+
         binding.createEvent.setOnClickListener {
-            val eventName = binding.EventName.text.toString().trim()
+            val eventName = binding.EventName.text.toString()
             if (eventName.isNotEmpty()) {
-                val selectedDate = intent.getLongExtra("selectedDate", 0)
                 val resultIntent = Intent()
                 resultIntent.putExtra("eventName", eventName)
                 resultIntent.putExtra("selectedDate", selectedDate)

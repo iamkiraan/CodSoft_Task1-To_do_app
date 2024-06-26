@@ -1,8 +1,7 @@
 package com.example.taskflow.FolderCreation
 
 data class FolderDataClass(
-    val folderName : String,
-    val colorResId :Int,
-    val taskList :Int
-
+    val folderName: String,
+    val colorResId: Int
 )
+

@@ -32,7 +32,7 @@ class CreateFolder : AppCompatActivity() {
         binding.createFolder.setOnClickListener {
             val folderName = binding.foldername.text.toString()
             if (folderName.isNotEmpty()) {
-                val newFolder = FolderDataClass(folderName, selectedColorResId, 0)
+                val newFolder = FolderDataClass(folderName, selectedColorResId)
                 saveFolder(newFolder)
                 val resultIntent = Intent()
                 resultIntent.putExtra("newFolder", Gson().toJson(newFolder))

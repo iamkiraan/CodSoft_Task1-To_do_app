@@ -1,62 +1,40 @@
-//package com.example.taskflow.Calender
-//
-//import android.view.LayoutInflater
-//import android.view.View
-//import android.view.ViewGroup
-//import android.widget.ImageView
-//import android.widget.PopupMenu
-//import android.widget.TextView
-//import androidx.recyclerview.widget.RecyclerView
-//import com.example.taskflow.R
-//import com.example.taskflow.appBarFragments.CalenderFragment
-//import java.text.SimpleDateFormat
-//import java.util.*
-//
-//class CalenderAdapter(
-//    private val fragment: CalenderFragment,
-//    private var eventList: ArrayList<CalenderDataClass>
-//) : RecyclerView.Adapter<CalenderAdapter.EventViewHolder>() {
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
-//        val inflater = LayoutInflater.from(parent.context).inflate(R.layout.event_on_calender, parent, false)
-//        return EventViewHolder(inflater)
-//    }
-//
-//    override fun getItemCount(): Int {
-//        return eventList.size
-//    }
-//
-//    override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
-//        val eventDetails = eventList[position]
-//        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-//        val formattedDate = dateFormat.format(Date(eventDetails.date))
-//
-//        holder.eventName.text = eventDetails.text
-//        holder.eventDate.text = formattedDate
-//
-//        holder.moreOptions.setOnClickListener {
-//            showPopupMenu(holder.moreOptions, position)
-//        }
-//    }
-//
-//    inner class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//        var eventName: TextView = itemView.findViewById(R.id.eventTask)
-//        var eventDate: TextView = itemView.findViewById(R.id.eventDate)
-//        var moreOptions: ImageView = itemView.findViewById(R.id.moreOptions)
-//    }
-//
-//    private fun showPopupMenu(view: View, position: Int) {
-//        val popupMenu = PopupMenu(view.context, view)
-//        popupMenu.menuInflater.inflate(R.menu.menu_event_optin, popupMenu.menu)
-//        popupMenu.setOnMenuItemClickListener { menuItem ->
-//            when (menuItem.itemId) {
-//                R.id.menu_delete -> {
-//                    fragment.deleteEventFromSharedPreferences(eventList[position])
-//                    true
-//                }
-//                else -> false
-//            }
-//        }
-//        popupMenu.show()
-//    }
-//}
+package com.example.taskflow.Calender
+
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.example.taskflow.R
+import com.example.taskflow.appBarFragments.CalenderFragment
+import java.util.Date
+import java.util.Locale
+
+class CalenderAdapter(
+    private val context: Context,
+    private val eventList: ArrayList<CalenderDataClass>
+) : RecyclerView.Adapter<CalenderAdapter.CalenderViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalenderViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.event_on_calender, parent, false)
+        return CalenderViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: CalenderViewHolder, position: Int) {
+        val event = eventList[position]
+        holder.eventName.text = event.text
+        holder.eventDate.text = java.text.SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(
+            Date(event.date)
+        )
+    }
+
+    override fun getItemCount(): Int {
+        return eventList.size
+    }
+
+    inner class CalenderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val eventName: TextView = itemView.findViewById(R.id.EventName)
+        val eventDate: TextView = itemView.findViewById(R.id.eventDate)
+    }
+}

@@ -19,8 +19,7 @@ class FolderAdapter(
 ) : RecyclerView.Adapter<FolderAdapter.FolderViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FolderViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-            .inflate(R.layout.add_folder, parent, false)
+        val inflater = LayoutInflater.from(parent.context).inflate(R.layout.add_folder, parent, false)
         return FolderViewHolder(inflater)
     }
 
@@ -31,10 +30,7 @@ class FolderAdapter(
     override fun onBindViewHolder(holder: FolderViewHolder, position: Int) {
         val folderData = folderList[position]
         holder.FolderName.text = folderData.folderName
-
-        // Set the folder name color
         holder.FolderName.setTextColor(ContextCompat.getColor(context, folderData.colorResId))
-
         holder.deleteIcon.setOnClickListener {
             showBottomSheetDialog(position)
         }
@@ -43,16 +39,13 @@ class FolderAdapter(
     private fun showBottomSheetDialog(position: Int) {
         val bottomSheetDialog = BottomSheetDialog(context)
         val bottomSheetView = LayoutInflater.from(context).inflate(R.layout.bottom_sheet_delete_confirmation, null)
-
         bottomSheetView.findViewById<Button>(R.id.confirm_delete).setOnClickListener {
             folderDeletedCallback(position)
             bottomSheetDialog.dismiss()
         }
-
         bottomSheetView.findViewById<Button>(R.id.cancel_delete).setOnClickListener {
             bottomSheetDialog.dismiss()
         }
-
         bottomSheetDialog.setContentView(bottomSheetView)
         bottomSheetDialog.show()
     }
