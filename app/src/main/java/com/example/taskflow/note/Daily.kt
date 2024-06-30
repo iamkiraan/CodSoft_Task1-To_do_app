@@ -1,6 +1,10 @@
 package com.example.taskflow.note
 
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Button
@@ -11,8 +15,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.taskflow.Daily.Task
 import com.example.taskflow.R
 import com.example.taskflow.Daily.TaskAdapter
-import com.example.taskflow.appBarFragments.TaskFragment
+import com.example.taskflow.receiver.MidnightAlarmReceiver
 import com.example.taskflow.databinding.ActivityDailyBinding
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.util.*
 
 class Daily : AppCompatActivity() {
     private var _binding: ActivityDailyBinding? = null
@@ -22,18 +29,18 @@ class Daily : AppCompatActivity() {
     private lateinit var completedTaskAdapter: TaskAdapter
     private lateinit var activeTasks: MutableList<Task>
     private lateinit var completedTasks: MutableList<Task>
+    private lateinit var sharedPreferences: SharedPreferences
+    private val gson = Gson()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityDailyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //back to task
-        binding.arrowFolder.setOnClickListener{
-            val intent = Intent(this,TaskFragment::class.java)
-            startActivity(intent)
-            finish()
-        }
+        sharedPreferences = getSharedPreferences("TaskFlowPrefs", Context.MODE_PRIVATE)
+
+        // Schedule the midnight alarm when the app starts
+        MidnightAlarmReceiver.scheduleMidnightAlarm(this)
 
         // Load tasks from SharedPreferences
         activeTasks = TaskPreferences.getActiveTasks(this).toMutableList()
@@ -57,11 +64,9 @@ class Daily : AppCompatActivity() {
     }
 
     private fun showAddTaskDialog() {
-
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_task, null)
         val editTextTask = dialogView.findViewById<EditText>(R.id.editTextTask)
         val buttonAddTask = dialogView.findViewById<Button>(R.id.buttonAddTask)
-
 
         val dialog = AlertDialog.Builder(this)
             .setTitle("Add Task")
