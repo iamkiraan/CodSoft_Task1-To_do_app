@@ -1,4 +1,4 @@
-package com.example.taskflow.addTask
+package com.example.taskflow.Daily
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +8,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taskflow.R
-import com.example.taskflow.note.Task
 
 class TaskAdapter(
     private var tasks: MutableList<Task>,

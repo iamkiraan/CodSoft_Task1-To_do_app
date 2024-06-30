@@ -1,4 +1,4 @@
-package com.example.taskflow.note
+package com.example.taskflow.Daily
 
 data class Task(
     val name: String,

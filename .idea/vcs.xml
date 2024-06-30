@@ -2,6 +2,39 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/../.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../Data_structure_usingKotlin" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../HamroFutsal2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../Team-Beta-Astra---NCIT-Hackfest-2024" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../finalOne" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../Android-CameraX-Video-Record" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../Bus-Tracking-App-Kotlin" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../CameraXGuide" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../CameraXGuides" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../Goreto2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../JetpackComposeCameraXShowcase" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../Khalti-Payment-Integration" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../KiranGpt" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../MapOsmdroidKotlinExampl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../MapOsmdroidKotlinExample" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../MessengerClone" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../MyQuiz" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../NEwsAPI" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../Tracker-Android" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../VolleyApi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../android-firebase-storage" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../android-maps-compose" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../camerax" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../final/Team-Beta-Astra---NCIT-Hackfest-2024" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../footballfixture" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../forecast" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../hamro_futsal" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../khalti-sdk-android" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../kiran" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../memeAPi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../newApp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../retrifiapi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../speech_to_text" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../kiran" vcs="Git" />
   </component>
 </project>

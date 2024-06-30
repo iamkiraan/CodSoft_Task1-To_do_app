@@ -11,6 +11,9 @@ import com.example.taskflow.addTask.AddTask
 import com.example.taskflow.CustomSpinnerAdapter
 import com.example.taskflow.databinding.FragmentTaskBinding
 import com.example.taskflow.note.Daily
+import com.example.taskflow.note.Monthly
+import com.example.taskflow.note.Weekly
+import com.example.taskflow.note.Yearly
 
 class TaskFragment : Fragment() {
 
@@ -39,6 +42,25 @@ class TaskFragment : Fragment() {
             val intent = Intent(requireContext(),Daily::class.java)
             startActivity(intent)
         }
+
+        // weekly work
+        binding.weeklyWork.setOnClickListener{
+            val intent = Intent(requireContext(),Weekly::class.java)
+            startActivity(intent)
+        }
+
+        //monthly work
+        binding.monthlyWork.setOnClickListener{
+            val intent = Intent(requireContext(), Monthly::class.java)
+            startActivity(intent)
+        }
+
+        //yearly work
+        binding.yearlyWork.setOnClickListener{
+            val intent = Intent(requireContext(), Yearly::class.java)
+            startActivity(intent)
+        }
+
 
 
         val spinnerItems = resources.getStringArray(R.array.spinner_items)

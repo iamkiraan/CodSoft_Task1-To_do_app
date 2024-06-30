@@ -8,8 +8,9 @@ import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.taskflow.Daily.Task
 import com.example.taskflow.R
-import com.example.taskflow.addTask.TaskAdapter
+import com.example.taskflow.Daily.TaskAdapter
 import com.example.taskflow.appBarFragments.TaskFragment
 import com.example.taskflow.databinding.ActivityDailyBinding
 
@@ -56,12 +57,12 @@ class Daily : AppCompatActivity() {
     }
 
     private fun showAddTaskDialog() {
-        // Inflate the dialog layout
+
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_task, null)
         val editTextTask = dialogView.findViewById<EditText>(R.id.editTextTask)
         val buttonAddTask = dialogView.findViewById<Button>(R.id.buttonAddTask)
 
-        // Create and show the dialog
+
         val dialog = AlertDialog.Builder(this)
             .setTitle("Add Task")
             .setView(dialogView)
@@ -70,7 +71,6 @@ class Daily : AppCompatActivity() {
         buttonAddTask.setOnClickListener {
             val taskText = editTextTask.text.toString()
             if (taskText.isNotEmpty()) {
-                // Add the task to your list and notify the adapter
                 addTask(taskText)
                 dialog.dismiss()
             } else {
@@ -99,7 +99,6 @@ class Daily : AppCompatActivity() {
     }
 
     private fun onDeleteTask(task: Task, isActiveTask: Boolean) {
-        // Show confirmation dialog
         AlertDialog.Builder(this)
             .setTitle("Delete Task")
             .setMessage("Are you sure you want to delete this task?")

@@ -150,6 +150,7 @@
                 android:textSize="10sp"/>
 
             <ImageView
+                android:id="@+id/weeklyWork"
                 android:layout_width="25dp"
                 android:layout_height="30dp"
                 android:layout_gravity="end"
@@ -198,6 +199,7 @@
                 android:textColor="@color/black"
                 android:textSize="10sp"/>
             <ImageView
+                android:id="@+id/monthlyWork"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:clickable="true"
@@ -245,6 +247,7 @@
                 android:textColor="@color/black"
                 android:textSize="10sp"/>
             <ImageView
+                android:id="@+id/yearlyWork"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:clickable="true"
