@@ -1,132 +1,119 @@
 package com.example.taskflow.note
 
-import android.content.Intent
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.taskflow.Daily.Task
 import com.example.taskflow.R
-import com.example.taskflow.Daily.TaskAdapter
-import com.example.taskflow.appBarFragments.TaskFragment
+import com.example.taskflow.Weekly.WeeklyAdapter
+import com.example.taskflow.Weekly.WeeklyDataClass
 import com.example.taskflow.databinding.ActivityWeeklyBinding
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class Weekly : AppCompatActivity() {
-    private var _binding: ActivityWeeklyBinding? = null
-    private val binding get() = _binding!!
 
-    private lateinit var activeTaskAdapter: TaskAdapter
-    private lateinit var completedTaskAdapter: TaskAdapter
-    private lateinit var activeTasks: MutableList<Task>
-    private lateinit var completedTasks: MutableList<Task>
+    private val taskList = mutableListOf<WeeklyDataClass>()
+    private val doneTaskList = mutableListOf<WeeklyDataClass>()
+    private lateinit var taskAdapter: WeeklyAdapter
+    private lateinit var doneTaskAdapter: WeeklyAdapter
+    private lateinit var binding: ActivityWeeklyBinding
+    private lateinit var sharedPreferences: SharedPreferences
+    private val gson = Gson()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityWeeklyBinding.inflate(layoutInflater)
+        binding = ActivityWeeklyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //back to task
-        binding.arrowWeekly.setOnClickListener{
-            val intent = Intent(this,TaskFragment::class.java)
-            startActivity(intent)
-            finish()
-        }
+        sharedPreferences = getSharedPreferences("WeeklyTasks", Context.MODE_PRIVATE)
 
-        // Load tasks from SharedPreferences
-        activeTasks = TaskPreferences.getActiveTasks(this).toMutableList()
-        completedTasks = TaskPreferences.getCompletedTasks(this).toMutableList()
+        loadTasks()
 
-        // Initialize the adapters
-        activeTaskAdapter = TaskAdapter(activeTasks, { task, isChecked -> onTaskCheckChanged(task, isChecked) }, { task -> onDeleteTask(task, true) }, true)
-        completedTaskAdapter = TaskAdapter(completedTasks, { task, isChecked -> onTaskCheckChanged(task, isChecked) }, { task -> onDeleteTask(task, false) }, false)
+        taskAdapter = WeeklyAdapter(taskList, object : WeeklyAdapter.OnTaskCheckedChangeListener {
+            override fun onTaskCheckedChanged(task: WeeklyDataClass, isChecked: Boolean) {
+                handleTaskCheckChange(task, isChecked)
+            }
+        })
 
-        // Setup RecyclerViews
+        doneTaskAdapter = WeeklyAdapter(doneTaskList, object : WeeklyAdapter.OnTaskCheckedChangeListener {
+            override fun onTaskCheckedChanged(task: WeeklyDataClass, isChecked: Boolean) {
+                handleTaskCheckChange(task, isChecked)
+            }
+        })
+
+        binding.recyclerWeeklyTask.adapter = taskAdapter
         binding.recyclerWeeklyTask.layoutManager = LinearLayoutManager(this)
-        binding.recyclerWeeklyTask.adapter = activeTaskAdapter
 
+        binding.recyclerWeeklyDone.adapter = doneTaskAdapter
         binding.recyclerWeeklyDone.layoutManager = LinearLayoutManager(this)
-        binding.recyclerWeeklyDone.adapter = completedTaskAdapter
 
-        // Set the click listener for the add task button
         binding.addTaskWeekly.setOnClickListener {
             showAddTaskDialog()
         }
     }
 
     private fun showAddTaskDialog() {
+        val builder = AlertDialog.Builder(this)
+        val view = layoutInflater.inflate(R.layout.dialog_add_task, null)
+        val editTextTask: EditText = view.findViewById(R.id.editTextTask)
+        val buttonAdd: Button = view.findViewById(R.id.buttonAddTask)
 
-        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_task, null)
-        val editTextTask = dialogView.findViewById<EditText>(R.id.editTextTask)
-        val buttonAddTask = dialogView.findViewById<Button>(R.id.buttonAddTask)
+        builder.setView(view)
+        val dialog = builder.create()
 
-
-        val dialog = AlertDialog.Builder(this)
-            .setTitle("Add Task")
-            .setView(dialogView)
-            .create()
-
-        buttonAddTask.setOnClickListener {
-            val taskText = editTextTask.text.toString()
-            if (taskText.isNotEmpty()) {
-                addTask(taskText)
+        buttonAdd.setOnClickListener {
+            val taskName = editTextTask.text.toString().trim()
+            if (taskName.isNotEmpty()) {
+                val task = WeeklyDataClass(taskName, false)
+                taskList.add(task)
+                taskAdapter.notifyItemInserted(taskList.size - 1)
+                saveTasks()
                 dialog.dismiss()
-            } else {
-                editTextTask.error = "Task cannot be empty"
             }
         }
 
         dialog.show()
     }
 
-    private fun addTask(taskName: String) {
-        val task = Task(taskName)
-        activeTaskAdapter.addTask(task)
-        saveTasksToPreferences()
-    }
-
-    private fun onTaskCheckChanged(task: Task, isChecked: Boolean) {
+    private fun handleTaskCheckChange(task: WeeklyDataClass, isChecked: Boolean) {
+        taskList.remove(task)
+        taskAdapter.notifyDataSetChanged()
+        task.isDone = isChecked
         if (isChecked) {
-            activeTaskAdapter.removeTask(task)
-            completedTaskAdapter.addTask(task)
+            doneTaskList.add(task)
+            doneTaskAdapter.notifyItemInserted(doneTaskList.size - 1)
         } else {
-            completedTaskAdapter.removeTask(task)
-            activeTaskAdapter.addTask(task)
+            taskList.add(task)
+            taskAdapter.notifyItemInserted(taskList.size - 1)
         }
-        saveTasksToPreferences()
+        doneTaskAdapter.notifyDataSetChanged()
+        saveTasks()
     }
 
-    private fun onDeleteTask(task: Task, isActiveTask: Boolean) {
-        AlertDialog.Builder(this)
-            .setTitle("Delete Task")
-            .setMessage("Are you sure you want to delete this task?")
-            .setPositiveButton("Yes") { dialog, _ ->
-                // Delete the task if the user confirms
-                if (isActiveTask) {
-                    activeTaskAdapter.removeTask(task)
-                    activeTasks.remove(task)
-                } else {
-                    completedTaskAdapter.removeTask(task)
-                    completedTasks.remove(task)
-                }
-                saveTasksToPreferences()
-                dialog.dismiss()
-            }
-            .setNegativeButton("No") { dialog, _ ->
-                dialog.dismiss()
-            }
-            .create()
-            .show()
+    private fun saveTasks() {
+        val editor = sharedPreferences.edit()
+        editor.putString("taskList", gson.toJson(taskList))
+        editor.putString("doneTaskList", gson.toJson(doneTaskList))
+        editor.apply()
     }
 
-    private fun saveTasksToPreferences() {
-        TaskPreferences.saveTasks(this, activeTasks, completedTasks)
-    }
+    private fun loadTasks() {
+        val taskListJson = sharedPreferences.getString("taskList", null)
+        val doneTaskListJson = sharedPreferences.getString("doneTaskList", null)
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
+        if (!taskListJson.isNullOrEmpty()) {
+            val type = object : TypeToken<MutableList<WeeklyDataClass>>() {}.type
+            taskList.addAll(gson.fromJson(taskListJson, type))
+        }
+
+        if (!doneTaskListJson.isNullOrEmpty()) {
+            val type = object : TypeToken<MutableList<WeeklyDataClass>>() {}.type
+            doneTaskList.addAll(gson.fromJson(doneTaskListJson, type))
+        }
     }
 }
