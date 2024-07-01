@@ -1,9 +1,8 @@
 package com.example.taskflow.note
 
-import android.app.AlarmManager
-import android.app.PendingIntent
+
 import android.content.Context
-import android.content.Intent
+
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,11 +14,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.taskflow.Daily.Task
 import com.example.taskflow.R
 import com.example.taskflow.Daily.TaskAdapter
-import com.example.taskflow.receiver.MidnightAlarmReceiver
+
 import com.example.taskflow.databinding.ActivityDailyBinding
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import java.util.*
+
 
 class Daily : AppCompatActivity() {
     private var _binding: ActivityDailyBinding? = null
@@ -39,25 +37,25 @@ class Daily : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences("TaskFlowPrefs", Context.MODE_PRIVATE)
 
-        // Schedule the midnight alarm when the app starts
-        MidnightAlarmReceiver.scheduleMidnightAlarm(this)
 
-        // Load tasks from SharedPreferences
+
+
+        // shared preference bata load hunxa
         activeTasks = TaskPreferences.getActiveTasks(this).toMutableList()
         completedTasks = TaskPreferences.getCompletedTasks(this).toMutableList()
 
-        // Initialize the adapters
+        // adatpter initialize gareko
         activeTaskAdapter = TaskAdapter(activeTasks, { task, isChecked -> onTaskCheckChanged(task, isChecked) }, { task -> onDeleteTask(task, true) }, true)
         completedTaskAdapter = TaskAdapter(completedTasks, { task, isChecked -> onTaskCheckChanged(task, isChecked) }, { task -> onDeleteTask(task, false) }, false)
 
-        // Setup RecyclerViews
+
         binding.recyclerDailyTask.layoutManager = LinearLayoutManager(this)
         binding.recyclerDailyTask.adapter = activeTaskAdapter
 
         binding.recyclerDailyDone.layoutManager = LinearLayoutManager(this)
         binding.recyclerDailyDone.adapter = completedTaskAdapter
 
-        // Set the click listener for the add task button
+        // click listener
         binding.addTaskOrange.setOnClickListener {
             showAddTaskDialog()
         }

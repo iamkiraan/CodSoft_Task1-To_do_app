@@ -1,4 +1,4 @@
-package com.example.taskflow.addTask
+package com.example.taskflow.task
 
 import android.app.DatePickerDialog
 import android.os.Bundle

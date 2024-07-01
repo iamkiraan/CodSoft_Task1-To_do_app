@@ -1,14 +1,13 @@
 package com.example.taskflow.Daily
 
-
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 object TaskPreferences {
-    const val KEY_ACTIVE_TASKS = "active_tasks"
-    const val KEY_COMPLETED_TASKS = "completed_tasks"
+     const val KEY_ACTIVE_TASKS = "active_tasks"
+     const val KEY_COMPLETED_TASKS = "completed_tasks"
 
     fun getActiveTasks(context: Context): List<Task> {
         val sharedPreferences = getSharedPreferences(context)

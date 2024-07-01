@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.taskflow.R
-import com.example.taskflow.addTask.AddTask
+import com.example.taskflow.task.AddTask
 import com.example.taskflow.CustomSpinnerAdapter
 import com.example.taskflow.databinding.FragmentTaskBinding
 import com.example.taskflow.note.Daily
